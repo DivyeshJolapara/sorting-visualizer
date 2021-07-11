@@ -43,7 +43,7 @@ $('#sort').click( function(){
 	let d= $('.bar').eq(3);
 
 
-	bubbleSort(arr,swap);
+	bubbleSortGen(arr,swap).next();
 		// await swap(a,b);
 		// await swap(c,d);
 		//let count = 0;
@@ -62,29 +62,37 @@ $('#sort').click( function(){
 	}
 	)
 
+function bubbleSort(arr,swap){
+	for(i=0;i<50;i++){
+		bubbleSortGen(arr,swap).next()
+	}
+}
+
 
 function swap(a,b){
 
 	// let temp = a;
-
+	let temp = arr[a];
+	arr[a]=arr[b];
+	arr[b]=temp;
 	// return new Promise((res,rej)=>{
 	// let x = await
 	
 	a = $('.bar').eq(a);
 	b = $('.bar').eq(b);
-	a.animate({
-		left:'25px'
-	})
-	// let y = 
-	//await
-	b.animate({
-		right:'25px'
-	},400,()=>{
-console.log("animation complerye");
-		return 1;
-	})
-		// a.before(b);
-		// b.after(a);
+	// a.animate({
+	// 	left:'25px',
+	// 	color:'red'
+	// })
+	// // let y = 
+	// //await
+	// b.animate({
+	// 	right:'25px',
+	// 	color:'red'
+	// })
+		a.before(b);
+		b.after(a);
+
 	
 // })
 }
@@ -98,21 +106,23 @@ console.log("animation complerye");
 	// })
 
 
-	async function bubbleSort(arr,cb)
+	 function* bubbleSortGen(arr,cb)
 	{
 		let n = arr.length;let count=0;
+		let swapped  = false;
 		for(let i = 0 ; i<n;i++){
 			for(let j=0;j<n-i-1;j++){
 				if(arr[j]>arr[j+1]){
 
-					// while (cb(j,j+1) != 1){
-						setTimeout(()=>{
-							cb(j,j+1);
-						},2000)
-					// }
+					 swap(j,j+1);
+					swapped=true;
+					yield;
 
 				}
+				
 			}
+			if(!swapped)
+				return;
 		}
 
 	}
