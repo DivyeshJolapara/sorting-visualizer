@@ -4,14 +4,14 @@
 			let arr=new Array(size);
 			for(let i = 0;i< size;i++){
 				
-				arr[i]=10 + Math.floor(Math.random() * 80);
+				arr[i]=10 + Math.floor(Math.random() * 70);
 			}
 			return arr;
 		}
 
 
 	//console.log(randomArrayGenerator(2));
-	var arr = randomArrayGenerator(Math.floor(screen.width/80)); //[20,10];
+	var arr = randomArrayGenerator(Math.floor(screen.width/58)); //[20,10];
 
 	function createBars(){
 		
@@ -24,7 +24,7 @@
 			$(`<div class='bar'>${a}</div>`).css({
 				"background-color":"yellow",
 				"height":`calc(${a}vh )`,
-				"width":"20px",
+				"width":"40px",
 				"display":"inline-block",
 				"margin-right":"5px",
 				"position":"relative"
